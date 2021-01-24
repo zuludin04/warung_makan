@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:warung_makan/ui/router.dart';
 import 'package:warung_makan/utils/constants.dart';
+import 'package:warung_makan/di/injector.dart' as inject;
 
-void main() {
+Future<void> main() async {
+  await inject.inject();
   runApp(MyApp());
 }
 

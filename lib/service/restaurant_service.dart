@@ -40,4 +40,13 @@ class RestaurantService {
       return Left(NoDataError());
     }
   }
+
+  Future<Either<NoDataError, List<Restaurants>>> searchRestaurant(String query) async {
+    try {
+      Response response = await dio.get('search?q=$query');
+      return Right(RestaurantResponse.fromJson(response.data).restaurants);
+    } catch (e) {
+      return Left(NoDataError());
+    }
+  }
 }

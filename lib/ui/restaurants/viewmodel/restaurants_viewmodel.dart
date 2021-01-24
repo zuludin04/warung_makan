@@ -27,6 +27,22 @@ class RestaurantsViewModel extends ChangeNotifier {
     _showLoading(false);
   }
 
+  Future<void> searchRestaurant(String query) async {
+    _showLoading(true);
+
+    var result = await _restaurantService.searchRestaurant(query);
+    result.fold(
+      (l) => _showErrorMessage = true,
+      (r) {
+        _showErrorMessage = false;
+        _restaurants.clear();
+        _restaurants.addAll(r);
+      },
+    );
+
+    _showLoading(false);
+  }
+
   void _showLoading(bool show) {
     _loading = show;
     notifyListeners();
