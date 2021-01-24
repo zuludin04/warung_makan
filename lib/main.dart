@@ -14,7 +14,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Warung Makan',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColorDark: Color(0xFFF8AC83),
+        primaryColorLight: Color(0xfffef0e8),
+        primaryColor: Color(0xFFf25b0a),
+        accentColor: Color(0xfff1ac18),
+        dividerColor: Color(0xffbdbdbd),
+        fontFamily: 'Raleway',
+        appBarTheme: AppBarTheme(
+          color: Colors.white,
+          iconTheme: IconThemeData(
+            color: Colors.black,
+          ),
+        ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       onGenerateRoute: generateRoute,

@@ -62,7 +62,7 @@ class Restaurant {
       });
     }
     menus = json["menus"] != null ? Menus.fromJson(json["menus"]) : null;
-    rating = json["rating"];
+    rating = json["rating"].toDouble();
     if (json["customerReviews"] != null) {
       customerReviews = [];
       json["customerReviews"].forEach((v) {

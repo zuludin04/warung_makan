@@ -31,7 +31,10 @@ class RestaurantsViewModel extends ChangeNotifier {
         _showErrorMessage = true;
         _errorMessage = NetworkException.getMessageError(l);
       },
-      (r) => _restaurants.addAll(r),
+      (r) {
+        _showErrorMessage = false;
+        _restaurants.addAll(r);
+      },
     );
 
     _showLoading(false);

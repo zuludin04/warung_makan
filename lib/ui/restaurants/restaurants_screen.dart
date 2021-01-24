@@ -14,32 +14,48 @@ class _RestaurantsScreenState extends State<RestaurantsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Warung Makan'),
-        actions: [
-          IconButton(
-            onPressed: () => showSearch(context: context, delegate: Search()),
-            icon: Icon(Icons.search),
-          )
-        ],
-      ),
-      body: Center(
-        child: Consumer<RestaurantsViewModel>(
-          builder: (context, model, child) {
-            if (model.loading) return CircularProgressIndicator();
-            if (model.showErrorMessage)
-              return ErrorMessage(
-                isError: true,
-                errorMessage: model.errorMessage,
-                retryButton: () => model.loadRestaurantList(),
+      body: NestedScrollView(
+        headerSliverBuilder: (context, isScrolled) {
+          return [
+            SliverAppBar(
+              expandedHeight: 100,
+              elevation: 0.0,
+              pinned: true,
+              flexibleSpace: FlexibleSpaceBar(
+                centerTitle: true,
+                title: Text(
+                  'Warung Makan',
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+              actions: [
+                IconButton(
+                  onPressed: () => showSearch(context: context, delegate: Search()),
+                  icon: Icon(Icons.search),
+                )
+              ],
+            ),
+          ];
+        },
+        body: Center(
+          child: Consumer<RestaurantsViewModel>(
+            builder: (context, model, child) {
+              if (model.loading) return CircularProgressIndicator();
+              if (model.showErrorMessage)
+                return ErrorMessage(
+                  isError: true,
+                  errorMessage: model.errorMessage,
+                  retryButton: () => model.loadRestaurantList(),
+                );
+              return ListView.builder(
+                physics: BouncingScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return RestaurantItem(restaurants: model.restaurants[index]);
+                },
+                itemCount: model.restaurants.length,
               );
-            return ListView.builder(
-              itemBuilder: (context, index) {
-                return RestaurantItem(restaurants: model.restaurants[index]);
-              },
-              itemCount: model.restaurants.length,
-            );
-          },
+            },
+          ),
         ),
       ),
     );

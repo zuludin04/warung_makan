@@ -11,7 +11,7 @@ class RestaurantItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => Navigator.pushNamed(context, DetailRestaurantPageRoute,
-          arguments: restaurants.id),
+          arguments: restaurants),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
         child: Card(
@@ -20,15 +20,15 @@ class RestaurantItem extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(5),
-                  topRight: Radius.circular(5),
-                ),
-                child: Image.network(
-                  'https://restaurant-api.dicoding.dev/images/medium/${restaurants.pictureId}',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
+                borderRadius: BorderRadius.all(Radius.circular(5)),
+                child: Hero(
+                  tag: restaurants.pictureId,
+                  child: Image.network(
+                    'https://restaurant-api.dicoding.dev/images/medium/${restaurants.pictureId}',
+                    width: 100,
+                    height: 100,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               Expanded(
