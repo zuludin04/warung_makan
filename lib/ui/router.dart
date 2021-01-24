@@ -18,7 +18,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case DetailRestaurantPageRoute:
       return _getPageRoute(
           name: settings.name,
-          page: RestaurantDetailScreen(restaurants: settings.arguments));
+          page: RestaurantDetailScreen(restaurantId: settings.arguments));
     default:
       return MaterialPageRoute(
         builder: (_) => Scaffold(

@@ -31,7 +31,7 @@ class RestaurantsScreen extends StatelessWidget {
   Widget _restaurantItem(BuildContext context, Restaurants restaurants) {
     return GestureDetector(
       onTap: () => Navigator.pushNamed(context, DetailRestaurantPageRoute,
-          arguments: restaurants),
+          arguments: restaurants.id),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
         child: Card(
@@ -45,7 +45,7 @@ class RestaurantsScreen extends StatelessWidget {
                   topRight: Radius.circular(5),
                 ),
                 child: Image.network(
-                  restaurants.pictureId,
+                  'https://restaurant-api.dicoding.dev/images/medium/${restaurants.pictureId}',
                   width: 100,
                   height: 100,
                   fit: BoxFit.cover,
