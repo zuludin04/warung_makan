@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:warung_makan/ui/restaurants/widgets/search_result.dart';
+import 'package:warung_makan/ui/restaurants/widgets/restaurant_search.dart';
 
 class Search extends SearchDelegate {
   @override
@@ -22,7 +22,7 @@ class Search extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    return SearchResult(query);
+    return RestaurantSearch(query);
   }
 
   @override

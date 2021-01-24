@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:warung_makan/model/detail_response.dart';
-import 'package:warung_makan/model/no_data_error.dart';
 import 'package:warung_makan/model/restaurant_response.dart';
+import 'package:warung_makan/utils/exception/network_exception.dart';
 import 'package:warung_makan/utils/logging_interceptor.dart';
 
 class RestaurantService {
@@ -21,32 +21,34 @@ class RestaurantService {
     return dio;
   }
 
-  Future<Either<NoDataError, List<Restaurants>>> loadRestaurantList() async {
+  Future<Either<NetworkException, List<Restaurants>>>
+      loadRestaurantList() async {
     try {
       Response response = await dio.get('list');
       return Right(RestaurantResponse.fromJson(response.data).restaurants);
     } catch (e) {
-      return Left(NoDataError());
+      return Left(NetworkException.getDioException(e));
     }
   }
 
-  Future<Either<NoDataError, Restaurant>> loadDetailRestaurant(
+  Future<Either<NetworkException, Restaurant>> loadDetailRestaurant(
       String id) async {
     try {
       Response response = await dio.get('detail/$id');
       var detail = DetailResponse.fromJson(response.data);
       return Right(detail.restaurant);
     } catch (e) {
-      return Left(NoDataError());
+      return Left(NetworkException.getDioException(e));
     }
   }
 
-  Future<Either<NoDataError, List<Restaurants>>> searchRestaurant(String query) async {
+  Future<Either<NetworkException, List<Restaurants>>> searchRestaurant(
+      String query) async {
     try {
       Response response = await dio.get('search?q=$query');
       return Right(RestaurantResponse.fromJson(response.data).restaurants);
     } catch (e) {
-      return Left(NoDataError());
+      return Left(NetworkException.getDioException(e));
     }
   }
 }

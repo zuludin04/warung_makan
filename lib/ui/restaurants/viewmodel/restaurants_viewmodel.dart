@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:warung_makan/model/restaurant_response.dart';
 import 'package:warung_makan/service/restaurant_service.dart';
+import 'package:warung_makan/utils/exception/network_exception.dart';
 
 class RestaurantsViewModel extends ChangeNotifier {
   RestaurantService _restaurantService = RestaurantService();
@@ -8,6 +9,8 @@ class RestaurantsViewModel extends ChangeNotifier {
   List<Restaurants> _restaurants = List();
   bool _loading = false;
   bool _showErrorMessage = false;
+  bool _emptyResult = false;
+  String _errorMessage = "";
 
   List<Restaurants> get restaurants => _restaurants;
 
@@ -15,12 +18,19 @@ class RestaurantsViewModel extends ChangeNotifier {
 
   bool get showErrorMessage => _showErrorMessage;
 
+  bool get emptyResult => _emptyResult;
+
+  String get errorMessage => _errorMessage;
+
   Future<void> loadRestaurantList() async {
     _showLoading(true);
 
     var result = await _restaurantService.loadRestaurantList();
     result.fold(
-      (l) => _showErrorMessage = true,
+      (l) {
+        _showErrorMessage = true;
+        _errorMessage = NetworkException.getMessageError(l);
+      },
       (r) => _restaurants.addAll(r),
     );
 
@@ -32,11 +42,19 @@ class RestaurantsViewModel extends ChangeNotifier {
 
     var result = await _restaurantService.searchRestaurant(query);
     result.fold(
-      (l) => _showErrorMessage = true,
+      (l) {
+        _showErrorMessage = true;
+        _errorMessage = NetworkException.getMessageError(l);
+      },
       (r) {
         _showErrorMessage = false;
-        _restaurants.clear();
-        _restaurants.addAll(r);
+        if (r.isEmpty) {
+          _emptyResult = true;
+          _errorMessage = "Result Not Found";
+        } else {
+          _restaurants.addAll(r);
+          _emptyResult = false;
+        }
       },
     );
 

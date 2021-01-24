@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:warung_makan/commons/error_message.dart';
 import 'package:warung_makan/ui/restaurants/viewmodel/restaurants_viewmodel.dart';
 import 'package:warung_makan/ui/restaurants/widgets/restaurant_item.dart';
 import 'package:warung_makan/ui/restaurants/widgets/search_page.dart';
@@ -26,7 +27,12 @@ class _RestaurantsScreenState extends State<RestaurantsScreen> {
         child: Consumer<RestaurantsViewModel>(
           builder: (context, model, child) {
             if (model.loading) return CircularProgressIndicator();
-            if (model.showErrorMessage) return Text('Can\'t Show Restaurant');
+            if (model.showErrorMessage)
+              return ErrorMessage(
+                isError: true,
+                errorMessage: model.errorMessage,
+                retryButton: () => model.loadRestaurantList(),
+              );
             return ListView.builder(
               itemBuilder: (context, index) {
                 return RestaurantItem(restaurants: model.restaurants[index]);
