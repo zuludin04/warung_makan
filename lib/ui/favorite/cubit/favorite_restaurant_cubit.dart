@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:warung_makan/data/model/favorite_entity.dart';
 import 'package:warung_makan/data/model/restaurant.dart';
 import 'package:warung_makan/data/warung_makan_repository.dart';
 

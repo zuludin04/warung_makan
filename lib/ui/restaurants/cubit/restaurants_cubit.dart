@@ -3,7 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:warung_makan/core/utils/exception/network_exception.dart';
 import 'package:warung_makan/data/model/restaurant.dart';
-import 'package:warung_makan/data/model/restaurant_response.dart';
 import 'package:warung_makan/data/warung_makan_repository.dart';
 
 part 'restaurants_cubit.freezed.dart';
