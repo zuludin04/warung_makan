@@ -1,7 +1,7 @@
 class DetailResponse {
   bool error;
   String message;
-  Restaurant restaurant;
+  DetailRestaurant restaurant;
 
   DetailResponse({this.error, this.message, this.restaurant});
 
@@ -9,7 +9,7 @@ class DetailResponse {
     error = json["error"];
     message = json["message"];
     restaurant = json["restaurant"] != null
-        ? Restaurant.fromJson(json["restaurant"])
+        ? DetailRestaurant.fromJson(json["restaurant"])
         : null;
   }
 
@@ -24,7 +24,7 @@ class DetailResponse {
   }
 }
 
-class Restaurant {
+class DetailRestaurant {
   String id;
   String name;
   String description;
@@ -36,7 +36,7 @@ class Restaurant {
   double rating;
   List<CustomerReviews> customerReviews;
 
-  Restaurant(
+  DetailRestaurant(
       {this.id,
       this.name,
       this.description,
@@ -48,7 +48,7 @@ class Restaurant {
       this.rating,
       this.customerReviews});
 
-  Restaurant.fromJson(dynamic json) {
+  DetailRestaurant.fromJson(dynamic json) {
     id = json["id"];
     name = json["name"];
     description = json["description"];

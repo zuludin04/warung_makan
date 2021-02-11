@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:warung_makan/core/commons/error_message.dart';
 import 'package:warung_makan/core/utils/constants.dart';
 import 'package:warung_makan/ui/restaurants/cubit/restaurants_cubit.dart';
-import 'package:warung_makan/ui/restaurants/widgets/restaurant_item.dart';
+import 'package:warung_makan/core/commons/restaurant_item.dart';
 import 'package:warung_makan/ui/search/restaurant_search_screen.dart';
 
 class RestaurantsScreen extends StatelessWidget {

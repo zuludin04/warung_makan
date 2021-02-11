@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:warung_makan/core/commons/error_message.dart';
 import 'package:warung_makan/di/injector.dart';
-import 'package:warung_makan/ui/restaurants/widgets/restaurant_item.dart';
+import 'package:warung_makan/core/commons/restaurant_item.dart';
 import 'package:warung_makan/ui/search/cubit/restaurant_search_cubit.dart';
 
 class RestaurantSearch extends StatelessWidget {

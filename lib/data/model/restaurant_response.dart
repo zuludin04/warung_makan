@@ -2,7 +2,7 @@ class RestaurantResponse {
   bool error;
   String message;
   int count;
-  List<Restaurants> restaurants;
+  List<RestaurantResult> restaurants;
 
   RestaurantResponse({
       this.error, 
@@ -17,7 +17,7 @@ class RestaurantResponse {
     if (json["restaurants"] != null) {
       restaurants = [];
       json["restaurants"].forEach((v) {
-        restaurants.add(Restaurants.fromJson(v));
+        restaurants.add(RestaurantResult.fromJson(v));
       });
     }
   }
@@ -34,7 +34,7 @@ class RestaurantResponse {
   }
 }
 
-class Restaurants {
+class RestaurantResult {
   String id;
   String name;
   String description;
@@ -42,7 +42,7 @@ class Restaurants {
   String city;
   double rating;
 
-  Restaurants({
+  RestaurantResult({
       this.id, 
       this.name, 
       this.description, 
@@ -50,7 +50,7 @@ class Restaurants {
       this.city, 
       this.rating});
 
-  Restaurants.fromJson(dynamic json) {
+  RestaurantResult.fromJson(dynamic json) {
     id = json["id"];
     name = json["name"];
     description = json["description"];

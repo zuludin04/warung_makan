@@ -9,7 +9,7 @@ class RestaurantApiProvider {
 
   RestaurantApiProvider(this._dio);
 
-  Future<List<Restaurants>> loadRestaurantList() async {
+  Future<List<RestaurantResult>> loadRestaurantList() async {
     try {
       Response response = await _dio.get('list');
       RestaurantResponse restaurants =
@@ -20,7 +20,7 @@ class RestaurantApiProvider {
     }
   }
 
-  Future<Restaurant> loadDetailRestaurant(String id) async {
+  Future<DetailRestaurant> loadDetailRestaurant(String id) async {
     try {
       Response response = await _dio.get('detail/$id');
       var detail = DetailResponse.fromJson(response.data);
@@ -30,7 +30,7 @@ class RestaurantApiProvider {
     }
   }
 
-  Future<List<Restaurants>> searchRestaurant(String query) async {
+  Future<List<RestaurantResult>> searchRestaurant(String query) async {
     try {
       Response response = await _dio.get('search?q=$query');
       return RestaurantResponse.fromJson(response.data).restaurants;

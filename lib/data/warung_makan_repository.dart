@@ -3,16 +3,17 @@ import 'package:injectable/injectable.dart';
 import 'package:warung_makan/core/utils/exception/network_exception.dart';
 import 'package:warung_makan/data/model/detail_response.dart';
 import 'package:warung_makan/data/model/favorite_entity.dart';
-import 'package:warung_makan/data/model/restaurant_response.dart';
+import 'package:warung_makan/data/model/restaurant.dart';
 import 'package:warung_makan/data/source/local/restaurant_db_provider.dart';
 import 'package:warung_makan/data/source/remote/restauran_api_provider.dart';
 
 abstract class WarungMakanRepository {
-  Future<Either<NetworkException, List<Restaurants>>> loadRestaurantList();
+  Future<Either<NetworkException, List<Restaurant>>> loadRestaurantList();
 
-  Future<Either<NetworkException, Restaurant>> loadDetailRestaurant(String id);
+  Future<Either<NetworkException, DetailRestaurant>> loadDetailRestaurant(
+      String id);
 
-  Future<Either<NetworkException, List<Restaurants>>> searchRestaurant(
+  Future<Either<NetworkException, List<Restaurant>>> searchRestaurant(
       String query);
 
   Future<int> insertFavoriteRestaurant(FavoriteEntity favorite);
@@ -21,7 +22,7 @@ abstract class WarungMakanRepository {
 
   Future<bool> checkIfRestaurantFavorite(String restaurantId);
 
-  Future<List<FavoriteEntity>> loadFavoriteRestaurant();
+  Future<List<Restaurant>> loadFavoriteRestaurant();
 }
 
 @LazySingleton(as: WarungMakanRepository)
@@ -32,7 +33,7 @@ class WarungMakanRepositoryImpl extends WarungMakanRepository {
   WarungMakanRepositoryImpl(this._dbProvider, this._apiProvider);
 
   @override
-  Future<Either<NetworkException, Restaurant>> loadDetailRestaurant(
+  Future<Either<NetworkException, DetailRestaurant>> loadDetailRestaurant(
       String id) async {
     try {
       var result = await _apiProvider.loadDetailRestaurant(id);
@@ -43,22 +44,22 @@ class WarungMakanRepositoryImpl extends WarungMakanRepository {
   }
 
   @override
-  Future<Either<NetworkException, List<Restaurants>>>
+  Future<Either<NetworkException, List<Restaurant>>>
       loadRestaurantList() async {
     try {
       var result = await _apiProvider.loadRestaurantList();
-      return Right(result);
+      return Right(result.map((e) => Restaurant.fromApi(e)).toList());
     } catch (e) {
       return Left(NetworkException.getDioException(e));
     }
   }
 
   @override
-  Future<Either<NetworkException, List<Restaurants>>> searchRestaurant(
+  Future<Either<NetworkException, List<Restaurant>>> searchRestaurant(
       String query) async {
     try {
       var result = await _apiProvider.searchRestaurant(query);
-      return Right(result);
+      return Right(result.map((e) => Restaurant.fromApi(e)).toList());
     } catch (e) {
       return Left(NetworkException.getDioException(e));
     }
@@ -77,6 +78,9 @@ class WarungMakanRepositoryImpl extends WarungMakanRepository {
       _dbProvider.insertFavoriteRestaurant(favorite);
 
   @override
-  Future<List<FavoriteEntity>> loadFavoriteRestaurant() =>
-      _dbProvider.loadFavoriteRestaurant();
+  Future<List<Restaurant>> loadFavoriteRestaurant() async {
+    var result = await _dbProvider.loadFavoriteRestaurant();
+    var favorites = result.map((e) => Restaurant.fromDb(e)).toList();
+    return favorites;
+  }
 }

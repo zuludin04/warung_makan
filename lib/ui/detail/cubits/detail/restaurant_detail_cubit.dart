@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:warung_makan/core/utils/exception/network_exception.dart';
 import 'package:warung_makan/data/model/detail_response.dart';
-import 'package:warung_makan/data/model/restaurant_response.dart';
+import 'package:warung_makan/data/model/restaurant.dart';
 import 'package:warung_makan/data/warung_makan_repository.dart';
 
 part 'restaurant_detail_cubit.freezed.dart';
@@ -17,10 +17,11 @@ class RestaurantDetailCubit extends Cubit<RestaurantDetailState> {
   RestaurantDetailCubit(this._repository)
       : super(RestaurantDetailState.initialDetail());
 
-  Future<void> showDetailRestaurant(Restaurants restaurants) async {
+  Future<void> showDetailRestaurant(Restaurant restaurants) async {
     emit(RestaurantDetailState.loadingDetail());
 
-    var result = await _repository.loadDetailRestaurant(restaurants.id);
+    var result =
+        await _repository.loadDetailRestaurant(restaurants.restaurantId);
     result.fold(
       (l) => emit(RestaurantDetailState.failedShowDetail(
           NetworkException.getMessageError(l))),

@@ -24,7 +24,7 @@ class _$RestaurantsStateTearOff {
   }
 
 // ignore: unused_element
-  ShowRestaurantList showRestaurantList(List<Restaurants> restaurants) {
+  ShowRestaurantList showRestaurantList(List<Restaurant> restaurants) {
     return ShowRestaurantList(
       restaurants,
     );
@@ -48,14 +48,14 @@ mixin _$RestaurantsState {
   TResult when<TResult extends Object>({
     @required TResult initialRestaurants(),
     @required TResult loadingRestaurants(),
-    @required TResult showRestaurantList(List<Restaurants> restaurants),
+    @required TResult showRestaurantList(List<Restaurant> restaurants),
     @required TResult failedShowRestaurants(String message),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initialRestaurants(),
     TResult loadingRestaurants(),
-    TResult showRestaurantList(List<Restaurants> restaurants),
+    TResult showRestaurantList(List<Restaurant> restaurants),
     TResult failedShowRestaurants(String message),
     @required TResult orElse(),
   });
@@ -134,7 +134,7 @@ class _$InitialRestaurants implements InitialRestaurants {
   TResult when<TResult extends Object>({
     @required TResult initialRestaurants(),
     @required TResult loadingRestaurants(),
-    @required TResult showRestaurantList(List<Restaurants> restaurants),
+    @required TResult showRestaurantList(List<Restaurant> restaurants),
     @required TResult failedShowRestaurants(String message),
   }) {
     assert(initialRestaurants != null);
@@ -149,7 +149,7 @@ class _$InitialRestaurants implements InitialRestaurants {
   TResult maybeWhen<TResult extends Object>({
     TResult initialRestaurants(),
     TResult loadingRestaurants(),
-    TResult showRestaurantList(List<Restaurants> restaurants),
+    TResult showRestaurantList(List<Restaurant> restaurants),
     TResult failedShowRestaurants(String message),
     @required TResult orElse(),
   }) {
@@ -237,7 +237,7 @@ class _$LoadingRestaurants implements LoadingRestaurants {
   TResult when<TResult extends Object>({
     @required TResult initialRestaurants(),
     @required TResult loadingRestaurants(),
-    @required TResult showRestaurantList(List<Restaurants> restaurants),
+    @required TResult showRestaurantList(List<Restaurant> restaurants),
     @required TResult failedShowRestaurants(String message),
   }) {
     assert(initialRestaurants != null);
@@ -252,7 +252,7 @@ class _$LoadingRestaurants implements LoadingRestaurants {
   TResult maybeWhen<TResult extends Object>({
     TResult initialRestaurants(),
     TResult loadingRestaurants(),
-    TResult showRestaurantList(List<Restaurants> restaurants),
+    TResult showRestaurantList(List<Restaurant> restaurants),
     TResult failedShowRestaurants(String message),
     @required TResult orElse(),
   }) {
@@ -304,7 +304,7 @@ abstract class $ShowRestaurantListCopyWith<$Res> {
   factory $ShowRestaurantListCopyWith(
           ShowRestaurantList value, $Res Function(ShowRestaurantList) then) =
       _$ShowRestaurantListCopyWithImpl<$Res>;
-  $Res call({List<Restaurants> restaurants});
+  $Res call({List<Restaurant> restaurants});
 }
 
 /// @nodoc
@@ -325,7 +325,7 @@ class _$ShowRestaurantListCopyWithImpl<$Res>
     return _then(ShowRestaurantList(
       restaurants == freezed
           ? _value.restaurants
-          : restaurants as List<Restaurants>,
+          : restaurants as List<Restaurant>,
     ));
   }
 }
@@ -335,7 +335,7 @@ class _$ShowRestaurantList implements ShowRestaurantList {
   const _$ShowRestaurantList(this.restaurants) : assert(restaurants != null);
 
   @override
-  final List<Restaurants> restaurants;
+  final List<Restaurant> restaurants;
 
   @override
   String toString() {
@@ -365,7 +365,7 @@ class _$ShowRestaurantList implements ShowRestaurantList {
   TResult when<TResult extends Object>({
     @required TResult initialRestaurants(),
     @required TResult loadingRestaurants(),
-    @required TResult showRestaurantList(List<Restaurants> restaurants),
+    @required TResult showRestaurantList(List<Restaurant> restaurants),
     @required TResult failedShowRestaurants(String message),
   }) {
     assert(initialRestaurants != null);
@@ -380,7 +380,7 @@ class _$ShowRestaurantList implements ShowRestaurantList {
   TResult maybeWhen<TResult extends Object>({
     TResult initialRestaurants(),
     TResult loadingRestaurants(),
-    TResult showRestaurantList(List<Restaurants> restaurants),
+    TResult showRestaurantList(List<Restaurant> restaurants),
     TResult failedShowRestaurants(String message),
     @required TResult orElse(),
   }) {
@@ -424,10 +424,10 @@ class _$ShowRestaurantList implements ShowRestaurantList {
 }
 
 abstract class ShowRestaurantList implements RestaurantsState {
-  const factory ShowRestaurantList(List<Restaurants> restaurants) =
+  const factory ShowRestaurantList(List<Restaurant> restaurants) =
       _$ShowRestaurantList;
 
-  List<Restaurants> get restaurants;
+  List<Restaurant> get restaurants;
   @JsonKey(ignore: true)
   $ShowRestaurantListCopyWith<ShowRestaurantList> get copyWith;
 }
@@ -496,7 +496,7 @@ class _$FailedShowRestaurants implements FailedShowRestaurants {
   TResult when<TResult extends Object>({
     @required TResult initialRestaurants(),
     @required TResult loadingRestaurants(),
-    @required TResult showRestaurantList(List<Restaurants> restaurants),
+    @required TResult showRestaurantList(List<Restaurant> restaurants),
     @required TResult failedShowRestaurants(String message),
   }) {
     assert(initialRestaurants != null);
@@ -511,7 +511,7 @@ class _$FailedShowRestaurants implements FailedShowRestaurants {
   TResult maybeWhen<TResult extends Object>({
     TResult initialRestaurants(),
     TResult loadingRestaurants(),
-    TResult showRestaurantList(List<Restaurants> restaurants),
+    TResult showRestaurantList(List<Restaurant> restaurants),
     TResult failedShowRestaurants(String message),
     @required TResult orElse(),
   }) {

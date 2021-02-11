@@ -5,7 +5,7 @@ import 'package:warung_makan/data/model/favorite_entity.dart';
 import 'package:warung_makan/ui/detail/cubits/favorite/favorite_button_cubit.dart';
 
 class FavoriteButton extends StatelessWidget {
-  final Restaurant restaurant;
+  final DetailRestaurant restaurant;
 
   FavoriteButton({Key key, this.restaurant}) : super(key: key);
 

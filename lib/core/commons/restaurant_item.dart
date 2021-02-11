@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:warung_makan/data/model/restaurant_response.dart';
 import 'package:warung_makan/core/utils/constants.dart';
+import 'package:warung_makan/data/model/restaurant.dart';
 
 class RestaurantItem extends StatelessWidget {
-  final Restaurants restaurants;
+  final Restaurant restaurants;
 
-  RestaurantItem({Key key, this.restaurants}): super(key: key);
+  RestaurantItem({Key key, this.restaurants}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +22,9 @@ class RestaurantItem extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(5)),
                 child: Hero(
-                  tag: restaurants.pictureId,
+                  tag: restaurants.image,
                   child: Image.network(
-                    'https://restaurant-api.dicoding.dev/images/medium/${restaurants.pictureId}',
+                    'https://restaurant-api.dicoding.dev/images/medium/${restaurants.image}',
                     width: 100,
                     height: 100,
                     fit: BoxFit.cover,

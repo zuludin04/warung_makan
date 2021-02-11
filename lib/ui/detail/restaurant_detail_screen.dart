@@ -3,12 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:warung_makan/core/commons/error_message.dart';
 import 'package:warung_makan/data/model/detail_response.dart';
+import 'package:warung_makan/data/model/restaurant.dart';
 import 'package:warung_makan/data/model/restaurant_response.dart';
 import 'package:warung_makan/ui/detail/cubits/detail/restaurant_detail_cubit.dart';
 import 'package:warung_makan/ui/detail/widgets/favorite_button.dart';
 
 class RestaurantDetailScreen extends StatelessWidget {
-  final Restaurants restaurant;
+  final Restaurant restaurant;
 
   RestaurantDetailScreen({Key key, this.restaurant}) : super(key: key);
 
@@ -29,9 +30,9 @@ class RestaurantDetailScreen extends StatelessWidget {
           body: Stack(
             children: [
               Hero(
-                tag: restaurant.pictureId,
+                tag: restaurant.image,
                 child: Image.network(
-                  'https://restaurant-api.dicoding.dev/images/large/${restaurant.pictureId}',
+                  'https://restaurant-api.dicoding.dev/images/large/${restaurant.image}',
                   height: size.height / 2.2,
                   fit: BoxFit.fill,
                 ),

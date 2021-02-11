@@ -24,7 +24,7 @@ class _$RestaurantSearchStateTearOff {
   }
 
 // ignore: unused_element
-  ShowSearchResult showSearchResult(List<Restaurants> results) {
+  ShowSearchResult showSearchResult(List<Restaurant> results) {
     return ShowSearchResult(
       results,
     );
@@ -53,7 +53,7 @@ mixin _$RestaurantSearchState {
   TResult when<TResult extends Object>({
     @required TResult initialSearch(),
     @required TResult loadingSearch(),
-    @required TResult showSearchResult(List<Restaurants> results),
+    @required TResult showSearchResult(List<Restaurant> results),
     @required TResult failedShowResult(String message),
     @required TResult emptyResult(),
   });
@@ -61,7 +61,7 @@ mixin _$RestaurantSearchState {
   TResult maybeWhen<TResult extends Object>({
     TResult initialSearch(),
     TResult loadingSearch(),
-    TResult showSearchResult(List<Restaurants> results),
+    TResult showSearchResult(List<Restaurant> results),
     TResult failedShowResult(String message),
     TResult emptyResult(),
     @required TResult orElse(),
@@ -143,7 +143,7 @@ class _$InitialSearch implements InitialSearch {
   TResult when<TResult extends Object>({
     @required TResult initialSearch(),
     @required TResult loadingSearch(),
-    @required TResult showSearchResult(List<Restaurants> results),
+    @required TResult showSearchResult(List<Restaurant> results),
     @required TResult failedShowResult(String message),
     @required TResult emptyResult(),
   }) {
@@ -160,7 +160,7 @@ class _$InitialSearch implements InitialSearch {
   TResult maybeWhen<TResult extends Object>({
     TResult initialSearch(),
     TResult loadingSearch(),
-    TResult showSearchResult(List<Restaurants> results),
+    TResult showSearchResult(List<Restaurant> results),
     TResult failedShowResult(String message),
     TResult emptyResult(),
     @required TResult orElse(),
@@ -252,7 +252,7 @@ class _$LoadingSearch implements LoadingSearch {
   TResult when<TResult extends Object>({
     @required TResult initialSearch(),
     @required TResult loadingSearch(),
-    @required TResult showSearchResult(List<Restaurants> results),
+    @required TResult showSearchResult(List<Restaurant> results),
     @required TResult failedShowResult(String message),
     @required TResult emptyResult(),
   }) {
@@ -269,7 +269,7 @@ class _$LoadingSearch implements LoadingSearch {
   TResult maybeWhen<TResult extends Object>({
     TResult initialSearch(),
     TResult loadingSearch(),
-    TResult showSearchResult(List<Restaurants> results),
+    TResult showSearchResult(List<Restaurant> results),
     TResult failedShowResult(String message),
     TResult emptyResult(),
     @required TResult orElse(),
@@ -325,7 +325,7 @@ abstract class $ShowSearchResultCopyWith<$Res> {
   factory $ShowSearchResultCopyWith(
           ShowSearchResult value, $Res Function(ShowSearchResult) then) =
       _$ShowSearchResultCopyWithImpl<$Res>;
-  $Res call({List<Restaurants> results});
+  $Res call({List<Restaurant> results});
 }
 
 /// @nodoc
@@ -344,7 +344,7 @@ class _$ShowSearchResultCopyWithImpl<$Res>
     Object results = freezed,
   }) {
     return _then(ShowSearchResult(
-      results == freezed ? _value.results : results as List<Restaurants>,
+      results == freezed ? _value.results : results as List<Restaurant>,
     ));
   }
 }
@@ -354,7 +354,7 @@ class _$ShowSearchResult implements ShowSearchResult {
   const _$ShowSearchResult(this.results) : assert(results != null);
 
   @override
-  final List<Restaurants> results;
+  final List<Restaurant> results;
 
   @override
   String toString() {
@@ -383,7 +383,7 @@ class _$ShowSearchResult implements ShowSearchResult {
   TResult when<TResult extends Object>({
     @required TResult initialSearch(),
     @required TResult loadingSearch(),
-    @required TResult showSearchResult(List<Restaurants> results),
+    @required TResult showSearchResult(List<Restaurant> results),
     @required TResult failedShowResult(String message),
     @required TResult emptyResult(),
   }) {
@@ -400,7 +400,7 @@ class _$ShowSearchResult implements ShowSearchResult {
   TResult maybeWhen<TResult extends Object>({
     TResult initialSearch(),
     TResult loadingSearch(),
-    TResult showSearchResult(List<Restaurants> results),
+    TResult showSearchResult(List<Restaurant> results),
     TResult failedShowResult(String message),
     TResult emptyResult(),
     @required TResult orElse(),
@@ -448,10 +448,9 @@ class _$ShowSearchResult implements ShowSearchResult {
 }
 
 abstract class ShowSearchResult implements RestaurantSearchState {
-  const factory ShowSearchResult(List<Restaurants> results) =
-      _$ShowSearchResult;
+  const factory ShowSearchResult(List<Restaurant> results) = _$ShowSearchResult;
 
-  List<Restaurants> get results;
+  List<Restaurant> get results;
   @JsonKey(ignore: true)
   $ShowSearchResultCopyWith<ShowSearchResult> get copyWith;
 }
@@ -519,7 +518,7 @@ class _$FailedShowResult implements FailedShowResult {
   TResult when<TResult extends Object>({
     @required TResult initialSearch(),
     @required TResult loadingSearch(),
-    @required TResult showSearchResult(List<Restaurants> results),
+    @required TResult showSearchResult(List<Restaurant> results),
     @required TResult failedShowResult(String message),
     @required TResult emptyResult(),
   }) {
@@ -536,7 +535,7 @@ class _$FailedShowResult implements FailedShowResult {
   TResult maybeWhen<TResult extends Object>({
     TResult initialSearch(),
     TResult loadingSearch(),
-    TResult showSearchResult(List<Restaurants> results),
+    TResult showSearchResult(List<Restaurant> results),
     TResult failedShowResult(String message),
     TResult emptyResult(),
     @required TResult orElse(),
@@ -632,7 +631,7 @@ class _$EmptyResult implements EmptyResult {
   TResult when<TResult extends Object>({
     @required TResult initialSearch(),
     @required TResult loadingSearch(),
-    @required TResult showSearchResult(List<Restaurants> results),
+    @required TResult showSearchResult(List<Restaurant> results),
     @required TResult failedShowResult(String message),
     @required TResult emptyResult(),
   }) {
@@ -649,7 +648,7 @@ class _$EmptyResult implements EmptyResult {
   TResult maybeWhen<TResult extends Object>({
     TResult initialSearch(),
     TResult loadingSearch(),
-    TResult showSearchResult(List<Restaurants> results),
+    TResult showSearchResult(List<Restaurant> results),
     TResult failedShowResult(String message),
     TResult emptyResult(),
     @required TResult orElse(),

@@ -24,7 +24,7 @@ class _$FavoriteRestaurantStateTearOff {
   }
 
 // ignore: unused_element
-  ShowFavorites showFavorites(List<FavoriteEntity> favorites) {
+  ShowFavorites showFavorites(List<Restaurant> favorites) {
     return ShowFavorites(
       favorites,
     );
@@ -46,14 +46,14 @@ mixin _$FavoriteRestaurantState {
   TResult when<TResult extends Object>({
     @required TResult initialFavorite(),
     @required TResult loadingFavorite(),
-    @required TResult showFavorites(List<FavoriteEntity> favorites),
+    @required TResult showFavorites(List<Restaurant> favorites),
     @required TResult emptyFavorite(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initialFavorite(),
     TResult loadingFavorite(),
-    TResult showFavorites(List<FavoriteEntity> favorites),
+    TResult showFavorites(List<Restaurant> favorites),
     TResult emptyFavorite(),
     @required TResult orElse(),
   });
@@ -132,7 +132,7 @@ class _$InitialFavorite implements InitialFavorite {
   TResult when<TResult extends Object>({
     @required TResult initialFavorite(),
     @required TResult loadingFavorite(),
-    @required TResult showFavorites(List<FavoriteEntity> favorites),
+    @required TResult showFavorites(List<Restaurant> favorites),
     @required TResult emptyFavorite(),
   }) {
     assert(initialFavorite != null);
@@ -147,7 +147,7 @@ class _$InitialFavorite implements InitialFavorite {
   TResult maybeWhen<TResult extends Object>({
     TResult initialFavorite(),
     TResult loadingFavorite(),
-    TResult showFavorites(List<FavoriteEntity> favorites),
+    TResult showFavorites(List<Restaurant> favorites),
     TResult emptyFavorite(),
     @required TResult orElse(),
   }) {
@@ -235,7 +235,7 @@ class _$LoadingFavorite implements LoadingFavorite {
   TResult when<TResult extends Object>({
     @required TResult initialFavorite(),
     @required TResult loadingFavorite(),
-    @required TResult showFavorites(List<FavoriteEntity> favorites),
+    @required TResult showFavorites(List<Restaurant> favorites),
     @required TResult emptyFavorite(),
   }) {
     assert(initialFavorite != null);
@@ -250,7 +250,7 @@ class _$LoadingFavorite implements LoadingFavorite {
   TResult maybeWhen<TResult extends Object>({
     TResult initialFavorite(),
     TResult loadingFavorite(),
-    TResult showFavorites(List<FavoriteEntity> favorites),
+    TResult showFavorites(List<Restaurant> favorites),
     TResult emptyFavorite(),
     @required TResult orElse(),
   }) {
@@ -302,7 +302,7 @@ abstract class $ShowFavoritesCopyWith<$Res> {
   factory $ShowFavoritesCopyWith(
           ShowFavorites value, $Res Function(ShowFavorites) then) =
       _$ShowFavoritesCopyWithImpl<$Res>;
-  $Res call({List<FavoriteEntity> favorites});
+  $Res call({List<Restaurant> favorites});
 }
 
 /// @nodoc
@@ -321,9 +321,7 @@ class _$ShowFavoritesCopyWithImpl<$Res>
     Object favorites = freezed,
   }) {
     return _then(ShowFavorites(
-      favorites == freezed
-          ? _value.favorites
-          : favorites as List<FavoriteEntity>,
+      favorites == freezed ? _value.favorites : favorites as List<Restaurant>,
     ));
   }
 }
@@ -333,7 +331,7 @@ class _$ShowFavorites implements ShowFavorites {
   const _$ShowFavorites(this.favorites) : assert(favorites != null);
 
   @override
-  final List<FavoriteEntity> favorites;
+  final List<Restaurant> favorites;
 
   @override
   String toString() {
@@ -363,7 +361,7 @@ class _$ShowFavorites implements ShowFavorites {
   TResult when<TResult extends Object>({
     @required TResult initialFavorite(),
     @required TResult loadingFavorite(),
-    @required TResult showFavorites(List<FavoriteEntity> favorites),
+    @required TResult showFavorites(List<Restaurant> favorites),
     @required TResult emptyFavorite(),
   }) {
     assert(initialFavorite != null);
@@ -378,7 +376,7 @@ class _$ShowFavorites implements ShowFavorites {
   TResult maybeWhen<TResult extends Object>({
     TResult initialFavorite(),
     TResult loadingFavorite(),
-    TResult showFavorites(List<FavoriteEntity> favorites),
+    TResult showFavorites(List<Restaurant> favorites),
     TResult emptyFavorite(),
     @required TResult orElse(),
   }) {
@@ -422,9 +420,9 @@ class _$ShowFavorites implements ShowFavorites {
 }
 
 abstract class ShowFavorites implements FavoriteRestaurantState {
-  const factory ShowFavorites(List<FavoriteEntity> favorites) = _$ShowFavorites;
+  const factory ShowFavorites(List<Restaurant> favorites) = _$ShowFavorites;
 
-  List<FavoriteEntity> get favorites;
+  List<Restaurant> get favorites;
   @JsonKey(ignore: true)
   $ShowFavoritesCopyWith<ShowFavorites> get copyWith;
 }
@@ -470,7 +468,7 @@ class _$EmptyFavorite implements EmptyFavorite {
   TResult when<TResult extends Object>({
     @required TResult initialFavorite(),
     @required TResult loadingFavorite(),
-    @required TResult showFavorites(List<FavoriteEntity> favorites),
+    @required TResult showFavorites(List<Restaurant> favorites),
     @required TResult emptyFavorite(),
   }) {
     assert(initialFavorite != null);
@@ -485,7 +483,7 @@ class _$EmptyFavorite implements EmptyFavorite {
   TResult maybeWhen<TResult extends Object>({
     TResult initialFavorite(),
     TResult loadingFavorite(),
-    TResult showFavorites(List<FavoriteEntity> favorites),
+    TResult showFavorites(List<Restaurant> favorites),
     TResult emptyFavorite(),
     @required TResult orElse(),
   }) {

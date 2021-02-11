@@ -24,7 +24,7 @@ class _$RestaurantDetailStateTearOff {
   }
 
 // ignore: unused_element
-  ShowRestaurantDetail showRestaurantDetail(Restaurant restaurant) {
+  ShowRestaurantDetail showRestaurantDetail(DetailRestaurant restaurant) {
     return ShowRestaurantDetail(
       restaurant,
     );
@@ -48,14 +48,14 @@ mixin _$RestaurantDetailState {
   TResult when<TResult extends Object>({
     @required TResult initialDetail(),
     @required TResult loadingDetail(),
-    @required TResult showRestaurantDetail(Restaurant restaurant),
+    @required TResult showRestaurantDetail(DetailRestaurant restaurant),
     @required TResult failedShowDetail(String message),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initialDetail(),
     TResult loadingDetail(),
-    TResult showRestaurantDetail(Restaurant restaurant),
+    TResult showRestaurantDetail(DetailRestaurant restaurant),
     TResult failedShowDetail(String message),
     @required TResult orElse(),
   });
@@ -134,7 +134,7 @@ class _$InitialDetail implements InitialDetail {
   TResult when<TResult extends Object>({
     @required TResult initialDetail(),
     @required TResult loadingDetail(),
-    @required TResult showRestaurantDetail(Restaurant restaurant),
+    @required TResult showRestaurantDetail(DetailRestaurant restaurant),
     @required TResult failedShowDetail(String message),
   }) {
     assert(initialDetail != null);
@@ -149,7 +149,7 @@ class _$InitialDetail implements InitialDetail {
   TResult maybeWhen<TResult extends Object>({
     TResult initialDetail(),
     TResult loadingDetail(),
-    TResult showRestaurantDetail(Restaurant restaurant),
+    TResult showRestaurantDetail(DetailRestaurant restaurant),
     TResult failedShowDetail(String message),
     @required TResult orElse(),
   }) {
@@ -237,7 +237,7 @@ class _$LoadingDetail implements LoadingDetail {
   TResult when<TResult extends Object>({
     @required TResult initialDetail(),
     @required TResult loadingDetail(),
-    @required TResult showRestaurantDetail(Restaurant restaurant),
+    @required TResult showRestaurantDetail(DetailRestaurant restaurant),
     @required TResult failedShowDetail(String message),
   }) {
     assert(initialDetail != null);
@@ -252,7 +252,7 @@ class _$LoadingDetail implements LoadingDetail {
   TResult maybeWhen<TResult extends Object>({
     TResult initialDetail(),
     TResult loadingDetail(),
-    TResult showRestaurantDetail(Restaurant restaurant),
+    TResult showRestaurantDetail(DetailRestaurant restaurant),
     TResult failedShowDetail(String message),
     @required TResult orElse(),
   }) {
@@ -304,7 +304,7 @@ abstract class $ShowRestaurantDetailCopyWith<$Res> {
   factory $ShowRestaurantDetailCopyWith(ShowRestaurantDetail value,
           $Res Function(ShowRestaurantDetail) then) =
       _$ShowRestaurantDetailCopyWithImpl<$Res>;
-  $Res call({Restaurant restaurant});
+  $Res call({DetailRestaurant restaurant});
 }
 
 /// @nodoc
@@ -323,7 +323,9 @@ class _$ShowRestaurantDetailCopyWithImpl<$Res>
     Object restaurant = freezed,
   }) {
     return _then(ShowRestaurantDetail(
-      restaurant == freezed ? _value.restaurant : restaurant as Restaurant,
+      restaurant == freezed
+          ? _value.restaurant
+          : restaurant as DetailRestaurant,
     ));
   }
 }
@@ -333,7 +335,7 @@ class _$ShowRestaurantDetail implements ShowRestaurantDetail {
   const _$ShowRestaurantDetail(this.restaurant) : assert(restaurant != null);
 
   @override
-  final Restaurant restaurant;
+  final DetailRestaurant restaurant;
 
   @override
   String toString() {
@@ -364,7 +366,7 @@ class _$ShowRestaurantDetail implements ShowRestaurantDetail {
   TResult when<TResult extends Object>({
     @required TResult initialDetail(),
     @required TResult loadingDetail(),
-    @required TResult showRestaurantDetail(Restaurant restaurant),
+    @required TResult showRestaurantDetail(DetailRestaurant restaurant),
     @required TResult failedShowDetail(String message),
   }) {
     assert(initialDetail != null);
@@ -379,7 +381,7 @@ class _$ShowRestaurantDetail implements ShowRestaurantDetail {
   TResult maybeWhen<TResult extends Object>({
     TResult initialDetail(),
     TResult loadingDetail(),
-    TResult showRestaurantDetail(Restaurant restaurant),
+    TResult showRestaurantDetail(DetailRestaurant restaurant),
     TResult failedShowDetail(String message),
     @required TResult orElse(),
   }) {
@@ -423,10 +425,10 @@ class _$ShowRestaurantDetail implements ShowRestaurantDetail {
 }
 
 abstract class ShowRestaurantDetail implements RestaurantDetailState {
-  const factory ShowRestaurantDetail(Restaurant restaurant) =
+  const factory ShowRestaurantDetail(DetailRestaurant restaurant) =
       _$ShowRestaurantDetail;
 
-  Restaurant get restaurant;
+  DetailRestaurant get restaurant;
   @JsonKey(ignore: true)
   $ShowRestaurantDetailCopyWith<ShowRestaurantDetail> get copyWith;
 }
@@ -494,7 +496,7 @@ class _$FailedShowDetail implements FailedShowDetail {
   TResult when<TResult extends Object>({
     @required TResult initialDetail(),
     @required TResult loadingDetail(),
-    @required TResult showRestaurantDetail(Restaurant restaurant),
+    @required TResult showRestaurantDetail(DetailRestaurant restaurant),
     @required TResult failedShowDetail(String message),
   }) {
     assert(initialDetail != null);
@@ -509,7 +511,7 @@ class _$FailedShowDetail implements FailedShowDetail {
   TResult maybeWhen<TResult extends Object>({
     TResult initialDetail(),
     TResult loadingDetail(),
-    TResult showRestaurantDetail(Restaurant restaurant),
+    TResult showRestaurantDetail(DetailRestaurant restaurant),
     TResult failedShowDetail(String message),
     @required TResult orElse(),
   }) {
