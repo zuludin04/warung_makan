@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
           ),
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
+        debugShowCheckedModeBanner: false,
         onGenerateRoute: generateRoute,
         initialRoute: SplashPageRoute,
       ),
