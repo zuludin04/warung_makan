@@ -23,7 +23,7 @@ class RestaurantsScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () => Navigator.pushNamed(context, FavoritePageRoute),
-            icon: Icon(Icons.favorite),
+            icon: Icon(Icons.favorite_border),
           ),
           IconButton(
             onPressed: () => showSearch(

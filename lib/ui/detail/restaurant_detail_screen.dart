@@ -4,7 +4,8 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:warung_makan/core/commons/error_message.dart';
 import 'package:warung_makan/data/model/detail_response.dart';
 import 'package:warung_makan/data/model/restaurant_response.dart';
-import 'package:warung_makan/ui/detail/cubit/restaurant_detail_cubit.dart';
+import 'package:warung_makan/ui/detail/cubits/detail/restaurant_detail_cubit.dart';
+import 'package:warung_makan/ui/detail/widgets/favorite_button.dart';
 
 class RestaurantDetailScreen extends StatelessWidget {
   final Restaurants restaurant;
@@ -56,40 +57,51 @@ class RestaurantDetailScreen extends StatelessWidget {
                       slivers: [
                         SliverList(
                           delegate: SliverChildListDelegate([
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 8.0, left: 8.0, right: 8.0, bottom: 4.0),
-                              child: Text(
-                                detail.restaurant.name,
-                                style: TextStyle(
-                                  fontSize: 18.0,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w800,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.location_pin,
-                                    size: 16.0,
-                                    color: Colors.black54,
-                                  ),
-                                  SizedBox(width: 3.0),
-                                  Text(
-                                    detail.restaurant.city,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontSize: 14.0,
-                                      color: Colors.black54,
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 8.0, left: 8.0, right: 8.0, bottom: 4.0),
+                                      child: Text(
+                                        detail.restaurant.name,
+                                        style: TextStyle(
+                                          fontSize: 18.0,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w800,
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
+                                    Padding(
+                                      padding:
+                                      const EdgeInsets.symmetric(horizontal: 8.0),
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            Icons.location_pin,
+                                            size: 16.0,
+                                            color: Colors.black54,
+                                          ),
+                                          SizedBox(width: 3.0),
+                                          Text(
+                                            detail.restaurant.city,
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                              fontSize: 14.0,
+                                              color: Colors.black54,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                FavoriteButton(restaurant: detail.restaurant),
+                              ],
                             ),
                             SizedBox(height: 10.0),
                             Padding(

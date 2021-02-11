@@ -14,15 +14,15 @@ class RestaurantDbProvider {
     return count;
   }
 
-  Future<int> deleteFavorite(int id) async {
-    int count = await _db
-        .delete(RestaurantFavoriteTable, where: 'id = ?', whereArgs: [id]);
+  Future<int> deleteFavorite(String restaurantId) async {
+    int count = await _db.delete(RestaurantFavoriteTable,
+        where: 'restaurantId = ?', whereArgs: [restaurantId]);
     return count;
   }
 
-  Future<bool> checkIfRestaurantFavorite(int id) async {
-    List<Map<String, dynamic>> result = await _db
-        .rawQuery('SELECT * FROM $RestaurantFavoriteTable WHERE movieId = $id');
+  Future<bool> checkIfRestaurantFavorite(String restaurantId) async {
+    List<Map<String, dynamic>> result = await _db.query(RestaurantFavoriteTable,
+        where: 'restaurantId = ?', whereArgs: [restaurantId]);
     List<FavoriteEntity> favorites =
         result.map((e) => FavoriteEntity.fromMap(e)).toList();
     if (favorites.isEmpty) {

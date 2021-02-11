@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:warung_makan/core/utils/constants.dart';
 import 'package:warung_makan/di/injector.dart';
-import 'package:warung_makan/ui/detail/cubit/restaurant_detail_cubit.dart';
+import 'package:warung_makan/ui/detail/cubits/detail/restaurant_detail_cubit.dart';
 import 'package:warung_makan/ui/detail/restaurant_detail_screen.dart';
-import 'package:warung_makan/ui/favorite/cubit/favorite_restaurant_cubit.dart';
 import 'package:warung_makan/ui/favorite/favorite_restaurant_screen.dart';
 import 'package:warung_makan/ui/restaurants/cubit/restaurants_cubit.dart';
 import 'package:warung_makan/ui/restaurants/restaurants_screen.dart';
@@ -32,11 +31,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case FavoritePageRoute:
       return _getPageRoute(
         name: settings.name,
-        page: BlocProvider<FavoriteRestaurantCubit>(
-          create: (context) =>
-              injector<FavoriteRestaurantCubit>()..loadFavoriteRestaurant(),
-          child: FavoriteRestaurantScreen(),
-        ),
+        page: FavoriteRestaurantScreen(),
       );
     default:
       return MaterialPageRoute(

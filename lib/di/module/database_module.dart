@@ -20,6 +20,7 @@ abstract class DatabaseModule {
   void _onCreateDb(Database db, int version) async {
     await db.execute(
         'CREATE TABLE $RestaurantFavoriteTable (id INTEGER PRIMARY KEY AUTOINCREMENT, '
+        'restaurantId TEXT, '
         'name TEXT, '
         'image TEXT, '
         'city TEXT, '

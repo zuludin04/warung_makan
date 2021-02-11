@@ -8,34 +8,38 @@ import 'package:warung_makan/ui/favorite/cubit/favorite_restaurant_cubit.dart';
 class FavoriteRestaurantScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Favorite Restaurant',
-          style: TextStyle(
-            fontSize: 18.0,
-            color: Colors.black,
-            fontWeight: FontWeight.w800,
+    return BlocProvider<FavoriteRestaurantCubit>.value(
+      value: BlocProvider.of<FavoriteRestaurantCubit>(context)
+        ..loadFavoriteRestaurant(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'Favorite Restaurant',
+            style: TextStyle(
+              fontSize: 18.0,
+              color: Colors.black,
+              fontWeight: FontWeight.w800,
+            ),
           ),
         ),
-      ),
-      body: Center(
-        child: BlocBuilder<FavoriteRestaurantCubit, FavoriteRestaurantState>(
-          builder: (context, state) {
-            return state.map(
-              initialFavorite: (_) => Container(),
-              loadingFavorite: (_) => CircularProgressIndicator(),
-              showFavorites: (fav) => ListView.builder(
-                itemBuilder: (context, index) =>
-                    _restaurantItem(context, fav.favorites[index]),
-                itemCount: fav.favorites.length,
-              ),
-              emptyFavorite: (_) => ErrorMessage(
-                isError: false,
-                errorMessage: 'Favorite Restaurant is Empty',
-              ),
-            );
-          },
+        body: Center(
+          child: BlocBuilder<FavoriteRestaurantCubit, FavoriteRestaurantState>(
+            builder: (context, state) {
+              return state.map(
+                initialFavorite: (_) => Container(),
+                loadingFavorite: (_) => CircularProgressIndicator(),
+                showFavorites: (fav) => ListView.builder(
+                  itemBuilder: (context, index) =>
+                      _restaurantItem(context, fav.favorites[index]),
+                  itemCount: fav.favorites.length,
+                ),
+                emptyFavorite: (_) => ErrorMessage(
+                  isError: false,
+                  errorMessage: 'Favorite Restaurant is Empty',
+                ),
+              );
+            },
+          ),
         ),
       ),
     );

@@ -17,9 +17,9 @@ abstract class WarungMakanRepository {
 
   Future<int> insertFavoriteRestaurant(FavoriteEntity favorite);
 
-  Future<int> deleteFavorite(int id);
+  Future<int> deleteFavorite(String restaurantId);
 
-  Future<bool> checkIfRestaurantFavorite(int id);
+  Future<bool> checkIfRestaurantFavorite(String restaurantId);
 
   Future<List<FavoriteEntity>> loadFavoriteRestaurant();
 }
@@ -65,11 +65,12 @@ class WarungMakanRepositoryImpl extends WarungMakanRepository {
   }
 
   @override
-  Future<bool> checkIfRestaurantFavorite(int id) =>
-      _dbProvider.checkIfRestaurantFavorite(id);
+  Future<bool> checkIfRestaurantFavorite(String restaurantId) =>
+      _dbProvider.checkIfRestaurantFavorite(restaurantId);
 
   @override
-  Future<int> deleteFavorite(int id) => _dbProvider.deleteFavorite(id);
+  Future<int> deleteFavorite(String restaurantId) =>
+      _dbProvider.deleteFavorite(restaurantId);
 
   @override
   Future<int> insertFavoriteRestaurant(FavoriteEntity favorite) =>
