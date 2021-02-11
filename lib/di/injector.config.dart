@@ -11,6 +11,7 @@ import 'package:injectable/injectable.dart';
 
 import 'module/api_module.dart';
 import 'module/database_module.dart';
+import '../ui/favorite/cubit/favorite_restaurant_cubit.dart';
 import '../data/source/remote/restauran_api_provider.dart';
 import '../data/source/local/restaurant_db_provider.dart';
 import '../ui/detail/cubit/restaurant_detail_cubit.dart';
@@ -38,6 +39,8 @@ Future<GetIt> $initGetIt(
       () => RestaurantDbProvider(get<Database>()));
   gh.lazySingleton<WarungMakanRepository>(() => WarungMakanRepositoryImpl(
       get<RestaurantDbProvider>(), get<RestaurantApiProvider>()));
+  gh.factory<FavoriteRestaurantCubit>(
+      () => FavoriteRestaurantCubit(get<WarungMakanRepository>()));
   gh.factory<RestaurantDetailCubit>(
       () => RestaurantDetailCubit(get<WarungMakanRepository>()));
   gh.factory<RestaurantSearchCubit>(

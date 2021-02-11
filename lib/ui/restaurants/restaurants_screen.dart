@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:warung_makan/core/commons/error_message.dart';
+import 'package:warung_makan/core/utils/constants.dart';
 import 'package:warung_makan/ui/restaurants/cubit/restaurants_cubit.dart';
 import 'package:warung_makan/ui/restaurants/widgets/restaurant_item.dart';
 import 'package:warung_makan/ui/search/restaurant_search_screen.dart';
@@ -20,6 +21,10 @@ class RestaurantsScreen extends StatelessWidget {
           ),
         ),
         actions: [
+          IconButton(
+            onPressed: () => Navigator.pushNamed(context, FavoritePageRoute),
+            icon: Icon(Icons.favorite),
+          ),
           IconButton(
             onPressed: () => showSearch(
                 context: context, delegate: RestaurantSearchScreen()),
