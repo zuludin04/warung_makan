@@ -28,6 +28,7 @@ class FavoriteButtonCubit extends Cubit<FavoriteButtonState> {
     } else {
       await _repository.insertFavoriteRestaurant(favorite);
     }
+    emit(FavoriteButtonState.updateFavoriteDb());
     checkFavoriteRestaurant(favorite.restaurantId);
   }
 }

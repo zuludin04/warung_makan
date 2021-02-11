@@ -24,6 +24,11 @@ class _$FavoriteButtonStateTearOff {
       favorite,
     );
   }
+
+// ignore: unused_element
+  UpdateFavoriteDb updateFavoriteDb() {
+    return const UpdateFavoriteDb();
+  }
 }
 
 /// @nodoc
@@ -36,22 +41,26 @@ mixin _$FavoriteButtonState {
   TResult when<TResult extends Object>({
     @required TResult initialButton(),
     @required TResult isRestaurantFavorite(bool favorite),
+    @required TResult updateFavoriteDb(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initialButton(),
     TResult isRestaurantFavorite(bool favorite),
+    TResult updateFavoriteDb(),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initialButton(InitialButton value),
     @required TResult isRestaurantFavorite(IsRestaurantFavorite value),
+    @required TResult updateFavoriteDb(UpdateFavoriteDb value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initialButton(InitialButton value),
     TResult isRestaurantFavorite(IsRestaurantFavorite value),
+    TResult updateFavoriteDb(UpdateFavoriteDb value),
     @required TResult orElse(),
   });
 }
@@ -114,9 +123,11 @@ class _$InitialButton implements InitialButton {
   TResult when<TResult extends Object>({
     @required TResult initialButton(),
     @required TResult isRestaurantFavorite(bool favorite),
+    @required TResult updateFavoriteDb(),
   }) {
     assert(initialButton != null);
     assert(isRestaurantFavorite != null);
+    assert(updateFavoriteDb != null);
     return initialButton();
   }
 
@@ -125,6 +136,7 @@ class _$InitialButton implements InitialButton {
   TResult maybeWhen<TResult extends Object>({
     TResult initialButton(),
     TResult isRestaurantFavorite(bool favorite),
+    TResult updateFavoriteDb(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -139,9 +151,11 @@ class _$InitialButton implements InitialButton {
   TResult map<TResult extends Object>({
     @required TResult initialButton(InitialButton value),
     @required TResult isRestaurantFavorite(IsRestaurantFavorite value),
+    @required TResult updateFavoriteDb(UpdateFavoriteDb value),
   }) {
     assert(initialButton != null);
     assert(isRestaurantFavorite != null);
+    assert(updateFavoriteDb != null);
     return initialButton(this);
   }
 
@@ -150,6 +164,7 @@ class _$InitialButton implements InitialButton {
   TResult maybeMap<TResult extends Object>({
     TResult initialButton(InitialButton value),
     TResult isRestaurantFavorite(IsRestaurantFavorite value),
+    TResult updateFavoriteDb(UpdateFavoriteDb value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -229,9 +244,11 @@ class _$IsRestaurantFavorite implements IsRestaurantFavorite {
   TResult when<TResult extends Object>({
     @required TResult initialButton(),
     @required TResult isRestaurantFavorite(bool favorite),
+    @required TResult updateFavoriteDb(),
   }) {
     assert(initialButton != null);
     assert(isRestaurantFavorite != null);
+    assert(updateFavoriteDb != null);
     return isRestaurantFavorite(favorite);
   }
 
@@ -240,6 +257,7 @@ class _$IsRestaurantFavorite implements IsRestaurantFavorite {
   TResult maybeWhen<TResult extends Object>({
     TResult initialButton(),
     TResult isRestaurantFavorite(bool favorite),
+    TResult updateFavoriteDb(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -254,9 +272,11 @@ class _$IsRestaurantFavorite implements IsRestaurantFavorite {
   TResult map<TResult extends Object>({
     @required TResult initialButton(InitialButton value),
     @required TResult isRestaurantFavorite(IsRestaurantFavorite value),
+    @required TResult updateFavoriteDb(UpdateFavoriteDb value),
   }) {
     assert(initialButton != null);
     assert(isRestaurantFavorite != null);
+    assert(updateFavoriteDb != null);
     return isRestaurantFavorite(this);
   }
 
@@ -265,6 +285,7 @@ class _$IsRestaurantFavorite implements IsRestaurantFavorite {
   TResult maybeMap<TResult extends Object>({
     TResult initialButton(InitialButton value),
     TResult isRestaurantFavorite(IsRestaurantFavorite value),
+    TResult updateFavoriteDb(UpdateFavoriteDb value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -281,4 +302,101 @@ abstract class IsRestaurantFavorite implements FavoriteButtonState {
   bool get favorite;
   @JsonKey(ignore: true)
   $IsRestaurantFavoriteCopyWith<IsRestaurantFavorite> get copyWith;
+}
+
+/// @nodoc
+abstract class $UpdateFavoriteDbCopyWith<$Res> {
+  factory $UpdateFavoriteDbCopyWith(
+          UpdateFavoriteDb value, $Res Function(UpdateFavoriteDb) then) =
+      _$UpdateFavoriteDbCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$UpdateFavoriteDbCopyWithImpl<$Res>
+    extends _$FavoriteButtonStateCopyWithImpl<$Res>
+    implements $UpdateFavoriteDbCopyWith<$Res> {
+  _$UpdateFavoriteDbCopyWithImpl(
+      UpdateFavoriteDb _value, $Res Function(UpdateFavoriteDb) _then)
+      : super(_value, (v) => _then(v as UpdateFavoriteDb));
+
+  @override
+  UpdateFavoriteDb get _value => super._value as UpdateFavoriteDb;
+}
+
+/// @nodoc
+class _$UpdateFavoriteDb implements UpdateFavoriteDb {
+  const _$UpdateFavoriteDb();
+
+  @override
+  String toString() {
+    return 'FavoriteButtonState.updateFavoriteDb()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is UpdateFavoriteDb);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult initialButton(),
+    @required TResult isRestaurantFavorite(bool favorite),
+    @required TResult updateFavoriteDb(),
+  }) {
+    assert(initialButton != null);
+    assert(isRestaurantFavorite != null);
+    assert(updateFavoriteDb != null);
+    return updateFavoriteDb();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialButton(),
+    TResult isRestaurantFavorite(bool favorite),
+    TResult updateFavoriteDb(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (updateFavoriteDb != null) {
+      return updateFavoriteDb();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult initialButton(InitialButton value),
+    @required TResult isRestaurantFavorite(IsRestaurantFavorite value),
+    @required TResult updateFavoriteDb(UpdateFavoriteDb value),
+  }) {
+    assert(initialButton != null);
+    assert(isRestaurantFavorite != null);
+    assert(updateFavoriteDb != null);
+    return updateFavoriteDb(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult initialButton(InitialButton value),
+    TResult isRestaurantFavorite(IsRestaurantFavorite value),
+    TResult updateFavoriteDb(UpdateFavoriteDb value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (updateFavoriteDb != null) {
+      return updateFavoriteDb(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateFavoriteDb implements FavoriteButtonState {
+  const factory UpdateFavoriteDb() = _$UpdateFavoriteDb;
 }

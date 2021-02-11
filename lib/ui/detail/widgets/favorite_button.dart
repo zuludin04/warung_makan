@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:warung_makan/data/model/detail_response.dart';
 import 'package:warung_makan/data/model/favorite_entity.dart';
 import 'package:warung_makan/ui/detail/cubits/favorite/favorite_button_cubit.dart';
+import 'package:warung_makan/ui/favorite/cubit/favorite_restaurant_cubit.dart';
 
 class FavoriteButton extends StatelessWidget {
   final DetailRestaurant restaurant;
@@ -14,7 +15,13 @@ class FavoriteButton extends StatelessWidget {
     return BlocProvider<FavoriteButtonCubit>.value(
       value: BlocProvider.of<FavoriteButtonCubit>(context)
         ..checkFavoriteRestaurant(restaurant.id),
-      child: BlocBuilder<FavoriteButtonCubit, FavoriteButtonState>(
+      child: BlocConsumer<FavoriteButtonCubit, FavoriteButtonState>(
+        buildWhen: (p, c) => c is! UpdateFavoriteDb,
+        listener: (context, state) {
+          if (state is UpdateFavoriteDb) {
+            context.read<FavoriteRestaurantCubit>().loadFavoriteRestaurant();
+          }
+        },
         builder: (context, state) {
           if (state is IsRestaurantFavorite) {
             return IconButton(
