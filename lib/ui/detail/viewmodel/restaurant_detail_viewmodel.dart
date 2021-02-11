@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:warung_makan/model/detail_response.dart';
-import 'package:warung_makan/service/restaurant_service.dart';
+import 'package:warung_makan/data/model/detail_response.dart';
+import 'package:warung_makan/data/source/remote/restauran_api_provider.dart';
 
 class RestaurantDetailViewModel extends ChangeNotifier {
-  RestaurantService _restaurantService = RestaurantService();
+  RestaurantApiProvider _restaurantService = RestaurantApiProvider();
 
   Restaurant _restaurant = Restaurant();
   bool _loading = false;

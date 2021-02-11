@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:warung_makan/ui/detail/restaurant_detail_screen.dart';
 import 'package:warung_makan/ui/restaurants/restaurants_screen.dart';
 import 'package:warung_makan/ui/restaurants/viewmodel/restaurants_viewmodel.dart';
-import 'package:warung_makan/utils/constants.dart';
+import 'package:warung_makan/core/utils/constants.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
-import 'package:warung_makan/model/detail_response.dart';
-import 'package:warung_makan/model/restaurant_response.dart';
+import 'package:warung_makan/data/model/detail_response.dart';
+import 'package:warung_makan/data/model/restaurant_response.dart';
 import 'package:warung_makan/ui/detail/viewmodel/restaurant_detail_viewmodel.dart';
 
 class RestaurantDetailScreen extends StatelessWidget {

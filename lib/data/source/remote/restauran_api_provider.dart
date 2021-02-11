@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:warung_makan/model/detail_response.dart';
-import 'package:warung_makan/model/restaurant_response.dart';
-import 'package:warung_makan/utils/exception/network_exception.dart';
-import 'package:warung_makan/utils/logging_interceptor.dart';
+import 'package:warung_makan/core/utils/exception/network_exception.dart';
+import 'package:warung_makan/core/utils/logging_interceptor.dart';
+import 'package:warung_makan/data/model/detail_response.dart';
+import 'package:warung_makan/data/model/restaurant_response.dart';
 
-class RestaurantService {
+class RestaurantApiProvider {
   Dio get dio => _dio();
 
   Dio _dio() {

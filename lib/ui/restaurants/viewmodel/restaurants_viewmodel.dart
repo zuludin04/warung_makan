@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:warung_makan/model/restaurant_response.dart';
-import 'package:warung_makan/service/restaurant_service.dart';
-import 'package:warung_makan/utils/exception/network_exception.dart';
+import 'package:warung_makan/data/model/restaurant_response.dart';
+import 'package:warung_makan/data/source/remote/restauran_api_provider.dart';
+import 'package:warung_makan/core/utils/exception/network_exception.dart';
 
 class RestaurantsViewModel extends ChangeNotifier {
-  RestaurantService _restaurantService = RestaurantService();
+  RestaurantApiProvider _restaurantService = RestaurantApiProvider();
 
   List<Restaurants> _restaurants = List();
   bool _loading = false;
