@@ -1,61 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:warung_makan/core/commons/error_message.dart';
-import 'package:warung_makan/ui/restaurants/viewmodel/restaurants_viewmodel.dart';
+import 'package:warung_makan/ui/restaurants/cubit/restaurants_cubit.dart';
 import 'package:warung_makan/ui/restaurants/widgets/restaurant_item.dart';
-import 'package:warung_makan/ui/restaurants/widgets/search_page.dart';
+import 'package:warung_makan/ui/search/restaurant_search_screen.dart';
 
-class RestaurantsScreen extends StatefulWidget {
-  @override
-  _RestaurantsScreenState createState() => _RestaurantsScreenState();
-}
-
-class _RestaurantsScreenState extends State<RestaurantsScreen> {
+class RestaurantsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: NestedScrollView(
-        headerSliverBuilder: (context, isScrolled) {
-          return [
-            SliverAppBar(
-              expandedHeight: 100,
-              elevation: 0.0,
-              pinned: true,
-              flexibleSpace: FlexibleSpaceBar(
-                centerTitle: true,
-                title: Text(
-                  'Warung Makan',
-                  style: TextStyle(color: Colors.black),
-                ),
-              ),
-              actions: [
-                IconButton(
-                  onPressed: () => showSearch(context: context, delegate: Search()),
-                  icon: Icon(Icons.search),
-                )
-              ],
-            ),
-          ];
-        },
-        body: Center(
-          child: Consumer<RestaurantsViewModel>(
-            builder: (context, model, child) {
-              if (model.loading) return CircularProgressIndicator();
-              if (model.showErrorMessage)
-                return ErrorMessage(
-                  isError: true,
-                  errorMessage: model.errorMessage,
-                  retryButton: () => model.loadRestaurantList(),
-                );
-              return ListView.builder(
+      appBar: AppBar(
+        title: Text(
+          'Warung Makan',
+          style: TextStyle(
+            fontSize: 18.0,
+            color: Colors.black,
+            fontWeight: FontWeight.w800,
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () => showSearch(
+                context: context, delegate: RestaurantSearchScreen()),
+            icon: Icon(Icons.search),
+          )
+        ],
+      ),
+      body: Center(
+        child: BlocBuilder<RestaurantsCubit, RestaurantsState>(
+          builder: (context, state) {
+            return state.map(
+              initialRestaurants: (_) => Container(),
+              loadingRestaurants: (_) => CircularProgressIndicator(),
+              showRestaurantList: (restaurants) => ListView.builder(
                 physics: BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
-                  return RestaurantItem(restaurants: model.restaurants[index]);
+                  return RestaurantItem(
+                      restaurants: restaurants.restaurants[index]);
                 },
-                itemCount: model.restaurants.length,
-              );
-            },
-          ),
+                itemCount: restaurants.restaurants.length,
+              ),
+              failedShowRestaurants: (message) => ErrorMessage(
+                isError: true,
+                errorMessage: message.message,
+                retryButton: () =>
+                    context.read<RestaurantsCubit>().loadRestaurants(),
+              ),
+            );
+          },
         ),
       ),
     );

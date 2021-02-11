@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:warung_makan/core/commons/error_message.dart';
 import 'package:warung_makan/data/model/detail_response.dart';
 import 'package:warung_makan/data/model/restaurant_response.dart';
-import 'package:warung_makan/ui/detail/viewmodel/restaurant_detail_viewmodel.dart';
+import 'package:warung_makan/ui/detail/cubit/restaurant_detail_cubit.dart';
 
 class RestaurantDetailScreen extends StatelessWidget {
   final Restaurants restaurant;
@@ -14,43 +15,42 @@ class RestaurantDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      body: ChangeNotifierProvider<RestaurantDetailViewModel>(
-        create: (_) =>
-            RestaurantDetailViewModel()..loadDetailRestaurant(restaurant.id),
-        child: Container(
-          child: SlidingUpPanel(
-            maxHeight: size.height,
-            minHeight: size.height / 1.4,
-            parallaxEnabled: true,
-            parallaxOffset: 0.55,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(18.0),
-              topRight: Radius.circular(18.0),
-            ),
-            body: Stack(
-              children: [
-                Hero(
-                  tag: restaurant.pictureId,
-                  child: Image.network(
-                    'https://restaurant-api.dicoding.dev/images/large/${restaurant.pictureId}',
-                    height: size.height / 2.2,
-                    fit: BoxFit.fill,
-                  ),
+      body: Container(
+        child: SlidingUpPanel(
+          maxHeight: size.height,
+          minHeight: size.height / 1.4,
+          parallaxEnabled: true,
+          parallaxOffset: 0.55,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(18.0),
+            topRight: Radius.circular(18.0),
+          ),
+          body: Stack(
+            children: [
+              Hero(
+                tag: restaurant.pictureId,
+                child: Image.network(
+                  'https://restaurant-api.dicoding.dev/images/large/${restaurant.pictureId}',
+                  height: size.height / 2.2,
+                  fit: BoxFit.fill,
                 ),
-                SafeArea(
-                  child: IconButton(
-                    icon: Icon(Icons.arrow_back),
-                    onPressed: () => Navigator.pop(context),
-                  ),
+              ),
+              SafeArea(
+                child: IconButton(
+                  icon: Icon(Icons.arrow_back),
+                  onPressed: () => Navigator.pop(context),
                 ),
-              ],
-            ),
-            panelBuilder: (controller) => SafeArea(
-              child: Center(
-                child: Consumer<RestaurantDetailViewModel>(
-                  builder: (context, model, child) {
-                    if (model.loading) return CircularProgressIndicator();
-                    return CustomScrollView(
+              ),
+            ],
+          ),
+          panelBuilder: (controller) => SafeArea(
+            child: Center(
+              child: BlocBuilder<RestaurantDetailCubit, RestaurantDetailState>(
+                builder: (context, state) {
+                  return state.map(
+                    initialDetail: (_) => Container(),
+                    loadingDetail: (_) => CircularProgressIndicator(),
+                    showRestaurantDetail: (detail) => CustomScrollView(
                       controller: controller,
                       physics: BouncingScrollPhysics(),
                       slivers: [
@@ -60,7 +60,7 @@ class RestaurantDetailScreen extends StatelessWidget {
                               padding: const EdgeInsets.only(
                                   top: 8.0, left: 8.0, right: 8.0, bottom: 4.0),
                               child: Text(
-                                model.restaurant.name,
+                                detail.restaurant.name,
                                 style: TextStyle(
                                   fontSize: 18.0,
                                   color: Colors.black,
@@ -80,7 +80,7 @@ class RestaurantDetailScreen extends StatelessWidget {
                                   ),
                                   SizedBox(width: 3.0),
                                   Text(
-                                    model.restaurant.city,
+                                    detail.restaurant.city,
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
@@ -96,7 +96,7 @@ class RestaurantDetailScreen extends StatelessWidget {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 8.0),
                               child: Row(
-                                children: model.restaurant.categories
+                                children: detail.restaurant.categories
                                     .map((e) => Padding(
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 4.0),
@@ -127,7 +127,7 @@ class RestaurantDetailScreen extends StatelessWidget {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 8.0),
                               child: Text(
-                                model.restaurant.description,
+                                detail.restaurant.description,
                                 style: TextStyle(color: Colors.black54),
                               ),
                             ),
@@ -141,10 +141,12 @@ class RestaurantDetailScreen extends StatelessWidget {
                             height: 50,
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
-                              itemCount: model.restaurant.menus.foods.length,
+                              itemCount: detail.restaurant.menus.foods.length,
                               itemBuilder: (context, index) =>
-                                  _foodAndDrinkItem(context,
-                                      model.restaurant.menus.foods[index].name),
+                                  _foodAndDrinkItem(
+                                      context,
+                                      detail
+                                          .restaurant.menus.foods[index].name),
                             ),
                           ),
                         ),
@@ -160,11 +162,11 @@ class RestaurantDetailScreen extends StatelessWidget {
                             height: 50,
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
-                              itemCount: model.restaurant.menus.drinks.length,
+                              itemCount: detail.restaurant.menus.drinks.length,
                               itemBuilder: (context, index) =>
                                   _foodAndDrinkItem(
                                       context,
-                                      model
+                                      detail
                                           .restaurant.menus.drinks[index].name),
                             ),
                           ),
@@ -179,14 +181,21 @@ class RestaurantDetailScreen extends StatelessWidget {
                         SliverList(
                           delegate: SliverChildBuilderDelegate(
                               (context, index) => _reviewRestaurant(
-                                  model.restaurant.customerReviews[index]),
+                                  detail.restaurant.customerReviews[index]),
                               childCount:
-                                  model.restaurant.customerReviews.length),
+                                  detail.restaurant.customerReviews.length),
                         ),
                       ],
-                    );
-                  },
-                ),
+                    ),
+                    failedShowDetail: (message) => ErrorMessage(
+                      isError: true,
+                      errorMessage: message.message,
+                      retryButton: () => context
+                          .read<RestaurantDetailCubit>()
+                          .showDetailRestaurant(restaurant),
+                    ),
+                  );
+                },
               ),
             ),
           ),

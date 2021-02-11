@@ -1,24 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:warung_makan/ui/detail/restaurant_detail_screen.dart';
-import 'package:warung_makan/ui/restaurants/restaurants_screen.dart';
-import 'package:warung_makan/ui/restaurants/viewmodel/restaurants_viewmodel.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:warung_makan/core/utils/constants.dart';
+import 'package:warung_makan/di/injector.dart';
+import 'package:warung_makan/ui/detail/cubit/restaurant_detail_cubit.dart';
+import 'package:warung_makan/ui/detail/restaurant_detail_screen.dart';
+import 'package:warung_makan/ui/restaurants/cubit/restaurants_cubit.dart';
+import 'package:warung_makan/ui/restaurants/restaurants_screen.dart';
+import 'package:warung_makan/ui/splash/splash_screen.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
+    case SplashPageRoute:
+      return _getPageRoute(name: settings.name, page: SplashScreen());
     case RestaurantPageRoute:
       return _getPageRoute(
         name: settings.name,
-        page: ChangeNotifierProvider<RestaurantsViewModel>(
-          create: (_) => RestaurantsViewModel()..loadRestaurantList(),
+        page: BlocProvider<RestaurantsCubit>(
+          create: (context) => injector<RestaurantsCubit>()..loadRestaurants(),
           child: RestaurantsScreen(),
         ),
       );
     case DetailRestaurantPageRoute:
       return _getPageRoute(
           name: settings.name,
-          page: RestaurantDetailScreen(restaurant: settings.arguments));
+          page: BlocProvider<RestaurantDetailCubit>(
+              create: (context) => injector<RestaurantDetailCubit>()
+                ..showDetailRestaurant(settings.arguments),
+              child: RestaurantDetailScreen(restaurant: settings.arguments)));
     default:
       return MaterialPageRoute(
         builder: (_) => Scaffold(

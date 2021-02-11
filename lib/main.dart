@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:warung_makan/core/utils/constants.dart';
+import 'package:warung_makan/di/injector.dart';
 import 'package:warung_makan/ui/router.dart';
-import 'package:warung_makan/di/injector.dart' as inject;
 
-Future<void> main() async {
-  await inject.inject();
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  configureInjection();
   runApp(MyApp());
 }
 
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       onGenerateRoute: generateRoute,
-      initialRoute: RestaurantPageRoute,
+      initialRoute: SplashPageRoute,
     );
   }
 }
