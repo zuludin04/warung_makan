@@ -5,6 +5,6 @@ import 'package:warung_makan/di/injector.config.dart';
 GetIt injector = GetIt.instance;
 
 @injectableInit
-void configureInjection() {
+Future<void> configureInjection() async {
   $initGetIt(injector);
 }

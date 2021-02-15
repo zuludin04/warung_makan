@@ -6,9 +6,9 @@ import 'package:warung_makan/ui/detail/cubits/favorite/favorite_button_cubit.dar
 import 'package:warung_makan/ui/favorite/cubit/favorite_restaurant_cubit.dart';
 import 'package:warung_makan/ui/router.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  configureInjection();
+  await configureInjection();
   runApp(MyApp());
 }
 

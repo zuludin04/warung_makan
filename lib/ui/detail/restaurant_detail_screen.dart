@@ -4,7 +4,6 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:warung_makan/core/commons/error_message.dart';
 import 'package:warung_makan/data/model/detail_response.dart';
 import 'package:warung_makan/data/model/restaurant.dart';
-import 'package:warung_makan/data/model/restaurant_response.dart';
 import 'package:warung_makan/ui/detail/cubits/detail/restaurant_detail_cubit.dart';
 import 'package:warung_makan/ui/detail/widgets/favorite_button.dart';
 
@@ -66,7 +65,10 @@ class RestaurantDetailScreen extends StatelessWidget {
                                   children: [
                                     Padding(
                                       padding: const EdgeInsets.only(
-                                          top: 8.0, left: 8.0, right: 8.0, bottom: 4.0),
+                                          top: 8.0,
+                                          left: 8.0,
+                                          right: 8.0,
+                                          bottom: 4.0),
                                       child: Text(
                                         detail.restaurant.name,
                                         style: TextStyle(
@@ -77,8 +79,8 @@ class RestaurantDetailScreen extends StatelessWidget {
                                       ),
                                     ),
                                     Padding(
-                                      padding:
-                                      const EdgeInsets.symmetric(horizontal: 8.0),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 8.0),
                                       child: Row(
                                         children: [
                                           Icon(
