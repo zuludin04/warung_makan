@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "49528851539",
+    "firebase_url": "https://bwaapps-d144f.firebaseio.com",
+    "project_id": "bwaapps-d144f",
+    "storage_bucket": "bwaapps-d144f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:49528851539:android:627313ae18d7f8e94b8aa6",
+        "android_client_info": {
+          "package_name": "com.app.zuludin.warung_makan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "49528851539-m6c4vomctgb0kqhaq8te37d54mjib2f9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.zuludin.warung_makan",
+            "certificate_hash": "51e5d96a2e7a8f5610a9471daa8ae160e5b642de"
+          }
+        },
+        {
+          "client_id": "49528851539-mmqn9t2l4dc1s2n1bir5ludm2gaclbct.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaetRYGAA04FUnJG-yjARyMfSUcpp1UNA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "49528851539-mmqn9t2l4dc1s2n1bir5ludm2gaclbct.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
