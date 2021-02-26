@@ -102,7 +102,11 @@ class CustomerReviews {
 
   CustomerReviews.fromJson(dynamic json) {
     name = json["name"];
-    review = json["review"];
+    if (json["review"] != null) {
+      review = json["review"];
+    } else {
+      review = "";
+    }
     date = json["date"];
   }
 
