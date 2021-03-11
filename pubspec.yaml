@@ -32,7 +32,7 @@ dependencies:
   dio: ^3.0.10
   get_it: ^5.0.6
   freezed: ^0.12.7
-  flutter_svg: ^0.19.1
+  flutter_svg: ^0.19.3
   sliding_up_panel: ^1.0.2
   flutter_bloc: ^6.1.1
   injectable: ^1.0.0
