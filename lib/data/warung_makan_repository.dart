@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:injectable/injectable.dart';
 import 'package:warung_makan/core/utils/exception/network_exception.dart';
 import 'package:warung_makan/data/model/detail_response.dart';
 import 'package:warung_makan/data/model/favorite_entity.dart';
@@ -25,7 +24,6 @@ abstract class WarungMakanRepository {
   Future<List<Restaurant>> loadFavoriteRestaurant();
 }
 
-@LazySingleton(as: WarungMakanRepository)
 class WarungMakanRepositoryImpl extends WarungMakanRepository {
   final RestaurantDbProvider _dbProvider;
   final RestaurantApiProvider _apiProvider;

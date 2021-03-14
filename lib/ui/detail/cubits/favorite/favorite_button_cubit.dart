@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
 import 'package:warung_makan/data/model/favorite_entity.dart';
 import 'package:warung_makan/data/warung_makan_repository.dart';
 
@@ -8,7 +7,6 @@ part 'favorite_button_cubit.freezed.dart';
 
 part 'favorite_button_state.dart';
 
-@injectable
 class FavoriteButtonCubit extends Cubit<FavoriteButtonState> {
   final WarungMakanRepository _repository;
   bool _isFavorite = false;

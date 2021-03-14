@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
 import 'package:warung_makan/data/model/restaurant.dart';
 import 'package:warung_makan/data/warung_makan_repository.dart';
 
@@ -8,7 +7,6 @@ part 'favorite_restaurant_cubit.freezed.dart';
 
 part 'favorite_restaurant_state.dart';
 
-@injectable
 class FavoriteRestaurantCubit extends Cubit<FavoriteRestaurantState> {
   final WarungMakanRepository _repository;
 
