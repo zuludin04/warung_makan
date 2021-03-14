@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 import 'package:warung_makan/core/utils/exception/network_exception.dart';
 import 'package:warung_makan/data/model/restaurant.dart';
 import 'package:warung_makan/data/warung_makan_repository.dart';
-import 'package:warung_makan/ui/restaurants/cubit/restaurants_cubit.dart';
+import 'package:warung_makan/ui/home/cubits/restaurants_cubit.dart';
 
 class MockWarungMakanRepository extends Mock implements WarungMakanRepository {}
 

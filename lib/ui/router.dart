@@ -5,22 +5,15 @@ import 'package:warung_makan/di/injector.dart';
 import 'package:warung_makan/ui/detail/cubits/detail/restaurant_detail_cubit.dart';
 import 'package:warung_makan/ui/detail/restaurant_detail_screen.dart';
 import 'package:warung_makan/ui/favorite/favorite_restaurant_screen.dart';
-import 'package:warung_makan/ui/restaurants/cubit/restaurants_cubit.dart';
-import 'package:warung_makan/ui/restaurants/restaurants_screen.dart';
+import 'package:warung_makan/ui/home/home_screen.dart';
 import 'package:warung_makan/ui/splash/splash_screen.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case SplashPageRoute:
       return _getPageRoute(name: settings.name, page: SplashScreen());
-    case RestaurantPageRoute:
-      return _getPageRoute(
-        name: settings.name,
-        page: BlocProvider<RestaurantsCubit>(
-          create: (context) => injector<RestaurantsCubit>()..loadRestaurants(),
-          child: RestaurantsScreen(),
-        ),
-      );
+    case HomePageRoute:
+      return _getPageRoute(name: settings.name, page: HomeScreen());
     case DetailRestaurantPageRoute:
       return _getPageRoute(
           name: settings.name,

@@ -17,7 +17,7 @@ import '../data/source/remote/restauran_api_provider.dart';
 import '../data/source/local/restaurant_db_provider.dart';
 import '../ui/detail/cubits/detail/restaurant_detail_cubit.dart';
 import '../ui/search/cubit/restaurant_search_cubit.dart';
-import '../ui/restaurants/cubit/restaurants_cubit.dart';
+import '../ui/home/cubits/restaurants_cubit.dart';
 import '../data/warung_makan_repository.dart';
 
 /// adds generated dependencies

@@ -40,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
   _splashTime() {
     var duration = Duration(seconds: 1);
     return Timer(duration, () {
-      Navigator.pushReplacementNamed(context, RestaurantPageRoute);
+      Navigator.pushReplacementNamed(context, HomePageRoute);
     });
   }
 }
